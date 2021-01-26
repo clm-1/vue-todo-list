@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Home (todo-list)</h1>
+    <h1>Things To Do</h1>
     <TodoList />
   </div>
 </template>
@@ -15,6 +15,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  h1 {
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: underline;
+    text-align: center;
+  }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Navbar />
-    <router-view/>
+    <div class="site-container">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -24,5 +26,11 @@
 
   body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(231, 231, 231);
+  }
+
+  .site-container {
+    margin: 0 auto;
+    max-width: 800px;
   }
 </style>

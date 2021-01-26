@@ -25,9 +25,10 @@ export default {
 
 <style scoped>
   .navbar {
-    background-color: burlywood;
+    background-color: rgb(243, 243, 243);
     padding: 1.2rem;
     width: 100%;
+    margin-bottom: 1rem;
   }
 
   .link-wrapper {

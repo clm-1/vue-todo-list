@@ -1,8 +1,9 @@
 <template>
   <div class="todo-list">
-    <h1>This is the todo-list</h1>
-    <TodoCard v-for="(todo, index) in todos" :key="index" :todo="todo"/>
-    
+    <TodoCard v-for="(todo, index) in todos" 
+              :key="index" 
+              :todo="todo"
+              :index="index"/>
   </div>
 </template>
 
@@ -22,5 +23,8 @@
 </script>
 
 <style scoped>
-
+  .todo-list {
+    margin: 0 auto;
+    max-width: 700px;
+  }
 </style>
