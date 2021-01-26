@@ -1,12 +1,12 @@
 <template>
-  <div class="about">
-    <h1>About</h1>
+  <div class="todo-form">
+    <h1>This is the todo-form</h1>
   </div>
 </template>
 
 <script>
 export default {
-  
+
 }
 </script>
 
