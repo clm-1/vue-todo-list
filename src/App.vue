@@ -33,16 +33,16 @@
 
   body {
     position: relative;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: rgb(233, 223, 201);
     background: linear-gradient(351deg, rgb(212, 200, 178) 0%, rgb(226, 219, 197) 100%);
+    min-height: 100vh;
     padding: .5rem;
     z-index: -1;
   }
 
   body:after {
     content: '';
-    position: absolute;
+    position: fixed;
     background-image: url('./assets/wood-texture.jpg');
     background-size: cover;
     width: 100%;

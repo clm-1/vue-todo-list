@@ -136,8 +136,9 @@ export default {
   }
 
   .remove {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
     width: 20px;
     display: flex;
     justify-content: center;
@@ -151,6 +152,12 @@ export default {
     margin-top: .3rem;
   }
 
+  .down:active,
+  .up:active,
+  .remove:active {
+    transform: scale(1.2);
+  }
+
   .down > img,
   .up > img {
     width: 100%;
@@ -159,6 +166,10 @@ export default {
 
   .done > div > .check-box > img {
     display: initial;
+  }
+  
+  .done > .info-box * {
+    color: #777;
   }
 
 

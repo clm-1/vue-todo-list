@@ -17,11 +17,11 @@ export default {
   .about {
     max-width: 750px;
     margin: .1rem auto;
-    padding: 0 1.7rem;
+    padding: 0 2.5rem;
   }
 
   h2 {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2.7rem;
     text-decoration: underline;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
@@ -37,7 +37,7 @@ export default {
   .sign {
     font-weight: bold;
     text-align: right;
-    margin-right: 1.8rem;
-    margin-top: 2.5rem;
+    margin-right: 1rem;
+    margin-top: 3rem;
   }
 </style>

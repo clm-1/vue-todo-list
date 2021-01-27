@@ -16,7 +16,7 @@ export default {
 
 <style scoped>
   .home {
-    margin-top: 1.8rem;
+    margin-top: 2rem;
   }
 
   h1 {
