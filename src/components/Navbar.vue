@@ -4,6 +4,7 @@
       <router-link to="/" exact active-class="current">Home</router-link>
       <router-link to="/add-todo" active-class="current">Add Todo</router-link>
       <router-link to="/about" active-class="current">About</router-link>
+      <router-link to="/update-todo" active-class="current">Update</router-link>
     </div>
   </div>
 </template>

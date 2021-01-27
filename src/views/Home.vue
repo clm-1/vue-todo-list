@@ -16,6 +16,7 @@ export default {
 
 <style scoped>
   .home {
+    position: relative;
     margin-top: 2rem;
   }
 

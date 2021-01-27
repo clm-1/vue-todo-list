@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import AddTodo from '../views/AddTodo.vue'
+import UpdateTodo from '../views/UpdateTodo.vue'
 
 Vue.use(VueRouter)
 
@@ -21,7 +22,12 @@ const routes = [
     path: '/add-todo',
     name: 'AddTodo',
     component: AddTodo
-  }
+  },
+  {
+    path: '/update-todo',
+    name: 'UpdateTodo',
+    component: UpdateTodo
+  },
 ]
 
 const router = new VueRouter({

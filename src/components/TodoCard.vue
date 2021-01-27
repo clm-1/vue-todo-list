@@ -1,9 +1,12 @@
 <template>
-  <div class="todo-card" :class="{ done: this.todo.isDone }">
+  <div class="todo-card" :class="{ done: this.todo.isDone, moved: this.todo.isMoved }">
     
-    <div class="check-box-wrapper" @click="markAsDone">
-      <div class="check-box">
-        <img src="../assets/check.png" alt="">
+    <div class="check-box-wrapper" >
+      <div class="check-box" @click="markAsDone">
+        <img src="../assets/check.png" alt="todo checkbox">
+      </div>
+      <div class="update-btn">
+        <img src="../assets/edit.png" alt="edit button" @click="updateIndex">
       </div>
     </div>
 
@@ -14,6 +17,10 @@
           <span class="author">{{ todo.author }}</span>
           <span class="time">{{ todo.time }}</span>
         </div>  
+    </div>
+
+    <div class="update-form">
+
     </div>
 
     <div class="button-box">
@@ -45,6 +52,10 @@ export default {
     },
     moveDown() {
       this.$store.commit('moveDown', this.index);
+    },
+    updateIndex() {
+      this.$store.commit('updateIndex', this.index);
+      this.$router.push('/update-todo');
     }
   }
 }
@@ -53,7 +64,8 @@ export default {
 <style scoped>
   .todo-card {
     margin: .1rem;
-    padding: .8rem;
+    padding: .5rem .8rem;
+    min-height: 105px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -76,8 +88,11 @@ export default {
   }
 
   .check-box-wrapper {
+    position: relative;
+    top: .2rem;
     display: flex;
     width: 10%;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     margin-right: .6rem;
@@ -85,8 +100,8 @@ export default {
 
   .check-box {
     position: relative;
-    width: 30px;
-    height: 30px;
+    width: 1.6rem;
+    height: 1.6rem;
     border: 1px solid black;
     cursor: pointer;
   }
@@ -152,6 +167,17 @@ export default {
     margin-top: .3rem;
   }
 
+  @keyframes flash {
+    0% { background-color: initial; }
+    20% { background-color: rgba(209, 203, 191, 0.167); }
+    100% {background-color: initial; }
+  }
+
+  .moved {
+    animation-name: flash;
+    animation-duration: .4s;
+  }
+
   .down:active,
   .up:active,
   .remove:active {
@@ -166,6 +192,18 @@ export default {
 
   .done > div > .check-box > img {
     display: initial;
+  }
+
+  .update-btn {
+    cursor: pointer;
+    position: relative;
+    left: .05rem;
+    width: 1.6rem;
+    margin-top: .6rem;
+  }
+
+  .update-btn > img {
+    width: 100%;
   }
   
   .done > .info-box * {
@@ -185,6 +223,10 @@ export default {
 
     .check-box-wrapper {
       margin-right: 0;
+    }
+
+    .info-box {
+      margin-right: .8rem;
     }
 
   }

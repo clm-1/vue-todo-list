@@ -4,6 +4,7 @@
               :key="index" 
               :todo="todo"
               :index="index"/>
+
   </div>
 </template>
 
@@ -24,7 +25,9 @@
 
 <style scoped>
   .todo-list {
+    position:relative;
     margin: 0 auto;
     max-width: 750px;
   }
+
 </style>

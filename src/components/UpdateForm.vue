@@ -1,6 +1,7 @@
 <template>
+
   <div class="todo-form">
-    <form @submit.prevent="addTodo">
+    <form @submit.prevent="test">
 
       <label class="title-label" for="title">Title:</label>
       <input type="text" id="title" v-model="title" required autocomplete="off">
@@ -11,7 +12,11 @@
       <label for="author">Author:</label>
       <input class="author-field" type="text" id="author" v-model="author" required autocomplete="off">
 
-      <input class="submit-btn" type="submit" value="Add">
+      <div class="form-btns">
+        <input @click.prevent="resetUpdate" type="reset" class="submit-btn reset-btn" value="Back To List">
+        <input class="submit-btn" type="submit" value="Update">
+      </div>
+     
     </form>
   </div>
 </template>
@@ -20,36 +25,44 @@
 export default {
   data() {
     return {
-      title: '',
-      desc: '',
-      author: '',
+      title: this.$store.state.updateTodo.title,
+      desc: this.$store.state.updateTodo.desc,
+      author: this.$store.state.updateTodo.author,
     }
   },
+  computed: {
+  },
   methods: {
-    addTodo() {
-      const today = new Date();
-      const date = today.toLocaleDateString('sv-SE');
-      const zero = today.getMinutes < 10 ? 0 : '';
-      const time = `${today.getHours()}:${zero}${today.getMinutes()}`
+    // addTodo() {
+    //   const today = new Date();
+    //   const date = today.toLocaleDateString('sv-SE');
+    //   const zero = today.getMinutes < 10 ? 0 : '';
+    //   const time = `${today.getHours()}:${zero}${today.getMinutes()}`
     
-      const newTodo = {
-        title: this.title,
-        desc: this.desc,
-        author: this.author,
-        time: `${date} ${time}`,
-        isDone: false,
-        isMoved: false,
-      }
+    //   const newTodo = {
+    //     title: this.title,
+    //     desc: this.desc,
+    //     author: this.author,
+    //     time: `${date} ${time}`,
+    //     isDone: false,
+    //     isMoved: false,
+    //   }
 
-      this.$store.commit('addTodo', newTodo);
+    //   this.$store.commit('addTodo', newTodo);
 
-      this.title = '';
-      this.desc = '';
-      this.author = '';
+    //   this.title = '';
+    //   this.desc = '';
+    //   this.author = '';
 
-      this.$router.push('/')
+    //   this.$router.push('/')
 
-      window.scrollTo(0, 0);
+    //   window.scrollTo(0, 0);
+    // },
+    test() {
+      console.log(this.title);
+    },
+    resetUpdate() {
+      this.$store.commit('resetUpdate')
     }
   }
 }
@@ -100,6 +113,12 @@ export default {
     margin-bottom: 2rem;
   }
 
+  .form-btns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
   .submit-btn {
     width: 30%;
     padding: 0;
@@ -107,7 +126,6 @@ export default {
     border: 1px solid black;
     cursor: pointer;
     border-radius: 3px;
-    margin-left: auto;
     height: 2rem;
     font-size: 1.1rem;
     font-family: monospace;
@@ -117,6 +135,10 @@ export default {
     outline: none;
     transform: scale(1.05);
     background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .submit-btn:hover {
+    background-color: rgba(0, 0, 0, 0.04);
   }
 
   textarea {
