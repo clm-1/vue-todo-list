@@ -17,8 +17,8 @@
     </div>
 
     <div class="button-box">
-        <div class="todo-btn up" @click="moveUp"><span>U</span></div>
-        <div class="todo-btn down" @click="moveDown"><span>D</span></div>
+        <div class="todo-btn up" @click="moveUp"><img src="../assets/up.png" alt=""></div>
+        <div class="todo-btn down" @click="moveDown"><img src="../assets/down.png" alt=""></div>
         <div class="todo-btn remove" @click="removeTodo"><span>X</span></div>
     </div>
 
@@ -80,7 +80,7 @@ export default {
     width: 10%;
     justify-content: flex-start;
     align-items: center;
-    margin-right: .5rem;
+    margin-right: .6rem;
   }
 
   .check-box {
@@ -101,7 +101,7 @@ export default {
   }
 
   .todo-title {
-    font-size: 1.1rem;
+    font-size: .9rem;
     letter-spacing: .05rem;
     margin-bottom: .1rem;
     font-family: 'Courier New', Courier, monospace
@@ -131,18 +131,36 @@ export default {
 
   .todo-btn {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 25px;
-    margin: .2rem;
-    padding: .1rem .4rem;
+    margin: 0 .2rem;
     cursor: pointer;
-    border-radius: 5px;
+  }
+
+  .remove {
+    font-size: 1.5rem;
+    font-weight: 400;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: .8rem;
+    opacity: .8;
+  }
+
+  .down,
+  .up {
+    width: 20px;
+    margin-top: .3rem;
+  }
+
+  .down > img,
+  .up > img {
+    width: 100%;
+    opacity: .7;
   }
 
   .done > div > .check-box > img {
     display: initial;
   }
+
 
   @media screen and (min-width: 600px) {
     .todo-card {
@@ -150,16 +168,40 @@ export default {
       margin: .1rem 1.4rem;
     }
 
+    .todo-title {
+      font-size: 1.1rem;
+    }
 
     .check-box-wrapper {
       margin-right: 0;
     }
 
+  }
+
+  @media screen and (min-width: 700px) {
     .button-box {
       margin-left: auto;
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
+    }
+
+    .remove {
+      font-size: 1.5rem;
+      margin-left: 1.5rem;
+      margin-top: 0;
+    }
+
+    .down,
+    .up {
+      margin-top: 0;
+      width: 20px;
+    }
+
+    .down > img,
+    .up > img {
+      width: 100%;
+      opacity: .8;
     }
   }
 

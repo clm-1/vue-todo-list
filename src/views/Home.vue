@@ -15,6 +15,10 @@ export default {
 </script>
 
 <style scoped>
+  .home {
+    margin-top: 1.8rem;
+  }
+
   h1 {
     font-family: 'Courier New', Courier, monospace;
     text-decoration: underline;
