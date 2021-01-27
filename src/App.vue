@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <Navbar />
     <div class="site-container">
+      <h1>- MY TODO LIST -</h1>
+      <Navbar />
       <router-view/>
     </div>
   </div>
@@ -9,10 +10,16 @@
 
 <script>
   import Navbar from './components/Navbar.vue'
+  import bg from './assets/ppr-texture.jpg'
 
   export default {
     components: {
       Navbar,
+    },
+    data() {
+      return {
+        background: bg,
+      }
     }
   }
 </script>
@@ -25,12 +32,77 @@
   }
 
   body {
+    position: relative;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: rgb(231, 231, 231);
+    background-color: rgb(233, 223, 201);
+    background: linear-gradient(351deg, rgb(212, 200, 178) 0%, rgb(226, 219, 197) 100%);
+    padding: .5rem;
+    z-index: -1;
+  }
+
+  body:after {
+    content: '';
+    position: absolute;
+    background-image: url('./assets/wood-texture.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    opacity: .1;
+    top: 0;
+    left: 0;
+    z-index: -1;
   }
 
   .site-container {
-    margin: 0 auto;
+    position: relative;
+    margin: 1.5rem auto;
     max-width: 800px;
+    min-height: 1000px;
+    border-top: 2px solid rgba(255, 255, 255, 0.386);
+    border-left: 2px solid rgba(255, 255, 255, 0.29);
+    z-index: 0;
+    padding: 1.5rem 1.5rem 3rem 1.5rem;
+    background-color: rgb(250, 249, 249);
+    background: linear-gradient(351deg, rgb(240, 240, 240) 0%, rgba(255,255,255,1) 100%);
+    box-shadow: 1px 0px 12px rgba(12, 5, 5, 0.1),
+                -1px 0px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .site-container::after {
+    content: '';
+    background-image: url('./assets/ppr-texture.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    opacity: .1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+  }
+
+  .site-container > * {
+    position: relative;
+    z-index: 100;
+  }
+  
+  h1 {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 1.7rem 1rem 1rem 1rem;
+  }
+
+  @media screen and (min-width: 430px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    h1 {
+      font-size: 3rem;
+    }
   }
 </style>

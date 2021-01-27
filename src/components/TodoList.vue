@@ -25,6 +25,6 @@
 <style scoped>
   .todo-list {
     margin: 0 auto;
-    max-width: 700px;
+    max-width: 750px;
   }
 </style>

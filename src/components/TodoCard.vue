@@ -1,20 +1,25 @@
 <template>
   <div class="todo-card" :class="{ done: this.todo.isDone }">
-    <div class="left">
-      <h2 class="todo-title">{{ todo.title }}</h2>
-      <p class="author">{{ todo.author }}</p>
-      <p class="desc">{{ todo.desc }}</p>
-      <p class="time">{{ todo.time }}</p>
+    
+    <div class="check-box-wrapper" @click="markAsDone">
+      <div class="check-box">
+        <img src="../assets/check.png" alt="">
+      </div>
     </div>
 
-    <div class="right">
- 
-        <div class="todo-btn up" @click="moveUp"><span>+</span></div>
-        <div class="todo-btn down" @click="moveDown"><span>-</span></div>
-   
-        <div class="todo-btn done-btn" @click="markAsDone"><span>Y</span></div>
+    <div class="info-box">
+        <h2 class="todo-title">{{ todo.title }}</h2>
+        <p class="desc">{{ todo.desc }}</p>
+        <div class="name-date">
+          <span class="author">{{ todo.author }}</span>
+          <span class="time">{{ todo.time }}</span>
+        </div>  
+    </div>
+
+    <div class="button-box">
+        <div class="todo-btn up" @click="moveUp"><span>U</span></div>
+        <div class="todo-btn down" @click="moveDown"><span>D</span></div>
         <div class="todo-btn remove" @click="removeTodo"><span>X</span></div>
-    
     </div>
 
   </div>
@@ -47,52 +52,80 @@ export default {
 
 <style scoped>
   .todo-card {
-    margin: 1rem;
+    margin: .1rem;
+    padding: .8rem;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    background-color: rgb(250, 249, 249);
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.219);;
+    border-bottom: 1px solid black;
   }
 
-  .left {
-    padding: .4rem .7rem;
-    width: 85%;
-    border-radius: 10px 0 0 10px;
-  }
-
-  .right {
+  .info-box {
     display: flex;
     flex-direction: column;
-    width: 15%;
+    align-items: flex-start;
+    width: 75%;
+  }
+
+  .button-box {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: .4rem;
+    width: 15%;
+  }
+
+  .check-box-wrapper {
+    display: flex;
+    width: 10%;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: .5rem;
+  }
+
+  .check-box {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+
+  .check-box > img {
+    display: none;
+    position: absolute;
+    bottom: .3rem;
+    left: .2rem;
+    width: 100%;
+    transform: scale(1.2);
   }
 
   .todo-title {
-    margin-bottom: -.1rem;
-    text-transform: capitalize;
-    font-family: Arial, Helvetica, sans-serif
+    font-size: 1.1rem;
+    letter-spacing: .05rem;
+    margin-bottom: .1rem;
+    font-family: 'Courier New', Courier, monospace
   }
 
   .author {
-    font-weight: 600;
-    position: relative;
-    left: 2px;
+    color: #555;
+    font-weight: 500;
+    font-size: .9rem;
+    font-family: monospace;
     margin-bottom: .4rem;
+    margin-right: .5rem;
   }
 
   .desc {
-    position: relative;
-    left: 2px;
-    margin-bottom: .5rem;
+    font-family: monospace;
+    font-size: 1rem;
+    margin-bottom: .4rem;
     color: #222;
   }
 
   .time {
-    position: relative;
-    left: 2px;
-    font-size: .9rem;
+    font-family: monospace;
+    font-size: .8rem;
     color: #555;
   }
 
@@ -104,58 +137,29 @@ export default {
     margin: .2rem;
     padding: .1rem .4rem;
     cursor: pointer;
-    border: 1px solid black;
     border-radius: 5px;
   }
 
-  .todo-btn:active {
-    transform: scale(1.05);
-  }
-
-  .done-btn {
-    border: none;
-    background-color: rgba(112, 211, 112, 0.699);
-  }
-
-  .remove {
-    border: none;
-    background-color: rgba(240, 91, 71, 0.582);
-  }
-
-  .done {
-    
-  }
-
-  .done > .right > .done-btn {
-    background-color: rgb(7, 158, 7);
-  }
-
-  .done > .left {
-    
+  .done > div > .check-box > img {
+    display: initial;
   }
 
   @media screen and (min-width: 600px) {
     .todo-card {
       display: flex;
-      justify-content: space-between;
+      margin: .1rem 1.4rem;
     }
 
-    .left {
-      width: 65%;
+
+    .check-box-wrapper {
+      margin-right: 0;
     }
 
-    .right {
-      width: 35%;
+    .button-box {
+      margin-left: auto;
       flex-direction: row;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
-    }
-
-    .todo-btn {
-      padding: .6rem 1rem;
-      margin: .4rem;
-      cursor: pointer;
-      width: 40px;
     }
   }
 

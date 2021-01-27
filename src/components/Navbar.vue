@@ -25,10 +25,9 @@ export default {
 
 <style scoped>
   .navbar {
-    background-color: rgb(243, 243, 243);
     padding: 1.2rem;
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 1.4rem;
   }
 
   .link-wrapper {
@@ -44,12 +43,14 @@ export default {
     padding: .2rem;
     font-size: 1.1rem;
     color: #111;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
     text-decoration: none;
     text-align: center
   }
 
   a:hover {
-    color: rgb(63, 3, 63);
+    color: rgb(61, 61, 61);
   }
 
   .current {
@@ -58,7 +59,7 @@ export default {
     text-decoration: underline;
   }
 
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 400px) {
     .link-wrapper {
       flex-direction: row;
     }

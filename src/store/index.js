@@ -7,28 +7,28 @@ export default new Vuex.Store({
   state: {
     todos: [
       {
-        title: 'Todo title 1',
+        title: 'This is the first thing I need to do',
         desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
         author: 'Ipsum Persson',
         time: '2021-01-26 19:07',
         isDone: false,
       },
       {
-        title: 'Todo title 2',
-        desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum culpa atque, totam optio suscipit nam et rem excepturi,',
-        author: 'Ipsum Persson',
-        time: '2021-01-26 19:07',
-        isDone: false,
-      },
-      {
-        title: 'Todo title 3',
+        title: 'Another thing to do...',
         desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
         author: 'Ipsum Persson',
         time: '2021-01-26 19:07',
         isDone: false,
       },
       {
-        title: 'Todo title 4',
+        title: 'And a third one...',
+        desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
+        author: 'Ipsum Persson',
+        time: '2021-01-26 19:07',
+        isDone: false,
+      },
+      {
+        title: 'How many things do I have to do?',
         desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum culpa atque,',
         author: 'Ipsum Persson',
         time: '2021-01-26 19:07',
