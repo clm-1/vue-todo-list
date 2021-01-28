@@ -1,7 +1,7 @@
 <template>
 
   <div class="todo-form">
-    <form @submit.prevent="test">
+    <form @submit.prevent="updateTodo">
 
       <label class="title-label" for="title">Title:</label>
       <input type="text" id="title" v-model="title" required autocomplete="off">
@@ -12,10 +12,9 @@
       <label for="author">Author:</label>
       <input class="author-field" type="text" id="author" v-model="author" required autocomplete="off">
 
-      <div class="form-btns">
-        <input @click.prevent="resetUpdate" type="reset" class="submit-btn reset-btn" value="Back To List">
-        <input class="submit-btn" type="submit" value="Update">
-      </div>
+
+      <input class="submit-btn" type="submit" value="Update">
+
      
     </form>
   </div>
@@ -33,33 +32,23 @@ export default {
   computed: {
   },
   methods: {
-    // addTodo() {
-    //   const today = new Date();
-    //   const date = today.toLocaleDateString('sv-SE');
-    //   const zero = today.getMinutes < 10 ? 0 : '';
-    //   const time = `${today.getHours()}:${zero}${today.getMinutes()}`
+    updateTodo() {
+      const today = new Date();
+      const date = today.toLocaleDateString('sv-SE');
+      const zero = today.getMinutes < 10 ? 0 : '';
+      const time = `${today.getHours()}:${zero}${today.getMinutes()}`
     
-    //   const newTodo = {
-    //     title: this.title,
-    //     desc: this.desc,
-    //     author: this.author,
-    //     time: `${date} ${time}`,
-    //     isDone: false,
-    //     isMoved: false,
-    //   }
+      const updatedInfo = {
+        title: this.title,
+        desc: this.desc,
+        author: this.author,
+        time: `${date} ${time}`,
+      }
 
-    //   this.$store.commit('addTodo', newTodo);
+      this.$store.commit('updateTodo', updatedInfo);
+      this.$router.push('/');
 
-    //   this.title = '';
-    //   this.desc = '';
-    //   this.author = '';
-
-    //   this.$router.push('/')
-
-    //   window.scrollTo(0, 0);
-    // },
-    test() {
-      console.log(this.title);
+      window.scrollTo(0, 0);
     },
     resetUpdate() {
       this.$store.commit('resetUpdate')
@@ -113,14 +102,9 @@ export default {
     margin-bottom: 2rem;
   }
 
-  .form-btns {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-
   .submit-btn {
     width: 30%;
+    margin-left: auto;
     padding: 0;
     background: none;
     border: 1px solid black;

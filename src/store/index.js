@@ -5,8 +5,6 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    updateIndex: null,
-    update: false,
     updateTodo: {
       title: '',
       desc: '',
@@ -52,9 +50,11 @@ export default new Vuex.Store({
     removeTodo(state, deleteTodo) {
       state.todos = state.todos.filter(todo => todo !== deleteTodo);
     },
+
     addTodo(state, newTodo) {
       state.todos.unshift(newTodo);
     },
+
     markAsDone(state, todoIndex) {
       if (state.todos[todoIndex].isDone === false) {
         state.todos[todoIndex].isDone = !state.todos[todoIndex].isDone;
@@ -66,6 +66,7 @@ export default new Vuex.Store({
         state.todos.unshift(...moveToTop);
       } 
     },
+
     moveUp(state, todoIndex) {
       if (todoIndex > 0) {
         state.todos[todoIndex].isMoved = true;
@@ -77,6 +78,7 @@ export default new Vuex.Store({
         state.todos.splice(todoIndex - 1, 0, ...todoUp);
       }
     },
+
     moveDown(state, todoIndex) {
       if (todoIndex < state.todos.length - 1) {
         state.todos[todoIndex].isMoved = true;
@@ -88,6 +90,7 @@ export default new Vuex.Store({
         state.todos.splice(todoIndex + 1, 0, ...todoDown);
       }
     },
+
     updateIndex(state, todoIndex) {
       state.updateTodo = {
         title: state.todos[todoIndex].title,
@@ -96,12 +99,22 @@ export default new Vuex.Store({
         index: todoIndex,
       };
     },
-    resetUpdate(state) {
+
+    updateTodo(state, updatedInfo) {
+      const i = state.updateTodo.index;
+      state.todos[i].title = updatedInfo.title;
+      state.todos[i].desc = updatedInfo.desc;
+      state.todos[i].author = updatedInfo.author;
+      state.todos[i].time = updatedInfo.time;
+
       state.updateTodo.index = -1;
-    }
+    },
+
+    resetUpdate(state, index) {
+      if (state.updateTodo.index === index) {
+        state.updateTodo.index = -1;
+      } 
+    },
   },
-  actions: {
-  },
-  modules: {
-  }
+
 })
