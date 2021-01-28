@@ -19,13 +19,9 @@
         </div>  
     </div>
 
-    <div class="update-form">
-
-    </div>
-
     <div class="button-box">
-        <div class="todo-btn up" @click="moveUp"><img src="../assets/up.png" alt=""></div>
-        <div class="todo-btn down" @click="moveDown"><img src="../assets/down.png" alt=""></div>
+        <div class="todo-btn up" @click="moveUp"><img src="../assets/up.png" alt="move up"></div>
+        <div class="todo-btn down" @click="moveDown"><img src="../assets/down.png" alt="move down"></div>
         <div class="todo-btn remove" @click="removeTodo"><span>X</span></div>
     </div>
 
@@ -35,24 +31,27 @@
 <script>
 export default {
   props: ['todo', 'index'],
-  data() {
-    return {
-      
-    }
-  },
   methods: {
     removeTodo() {
       this.$store.commit('removeTodo', this.todo);
+      this.$store.commit('setStorage');
     },
+
     markAsDone() {
       this.$store.commit('markAsDone', this.index);
+      this.$store.commit('setStorage');
     },
+
     moveUp() {
       this.$store.commit('moveUp', this.index);
+      this.$store.commit('setStorage');
     },
+
     moveDown() {
       this.$store.commit('moveDown', this.index);
+      this.$store.commit('setStorage');
     },
+
     updateIndex() {
       this.$store.commit('updateIndex', this.index);
       this.$router.push('/update-todo');
@@ -210,7 +209,6 @@ export default {
     color: #777;
   }
 
-
   @media screen and (min-width: 600px) {
     .todo-card {
       display: flex;
@@ -228,7 +226,6 @@ export default {
     .info-box {
       margin-right: .8rem;
     }
-
   }
 
   @media screen and (min-width: 700px) {
@@ -257,6 +254,4 @@ export default {
       opacity: .8;
     }
   }
-
-
 </style>

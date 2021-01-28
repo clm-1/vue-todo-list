@@ -4,7 +4,6 @@
               :key="index" 
               :todo="todo"
               :index="index"/>
-
   </div>
 </template>
 
@@ -18,8 +17,8 @@
     computed: {
       todos() {
         return this.$store.state.todos;
-      }
-    }
+      },
+    },
   }
 </script>
 
@@ -29,5 +28,4 @@
     margin: 0 auto;
     max-width: 750px;
   }
-
 </style>

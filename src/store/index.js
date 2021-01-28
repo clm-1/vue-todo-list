@@ -115,6 +115,14 @@ export default new Vuex.Store({
         state.updateTodo.index = -1;
       } 
     },
+    insertTodos(state) {
+      const stored = JSON.parse(localStorage.getItem('todos'));
+      stored.forEach(todo => { todo.isMoved = false });
+      state.todos = stored;
+    },
+    setStorage(state) {
+      localStorage.setItem('todos', JSON.stringify(state.todos));
+    }
   },
 
 })

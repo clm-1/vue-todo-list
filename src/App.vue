@@ -20,6 +20,13 @@
       return {
         background: bg,
       }
+    },
+    mounted() {
+      if (localStorage.getItem('todos') === null) {
+        this.$store.commit('setStorage');
+      } else {
+        this.$store.commit('insertTodos');
+      } 
     }
   }
 </script>

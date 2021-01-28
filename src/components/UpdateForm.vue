@@ -1,8 +1,8 @@
 <template>
 
   <div class="todo-form">
-    <form @submit.prevent="updateTodo">
 
+    <form @submit.prevent="updateTodo">
       <label class="title-label" for="title">Title:</label>
       <input type="text" id="title" v-model="title" required autocomplete="off">
 
@@ -12,11 +12,9 @@
       <label for="author">Author:</label>
       <input class="author-field" type="text" id="author" v-model="author" required autocomplete="off">
 
-
       <input class="submit-btn" type="submit" value="Update">
-
-     
     </form>
+
   </div>
 </template>
 
@@ -29,8 +27,6 @@ export default {
       author: this.$store.state.updateTodo.author,
     }
   },
-  computed: {
-  },
   methods: {
     updateTodo() {
       const today = new Date();
@@ -42,17 +38,19 @@ export default {
         title: this.title,
         desc: this.desc,
         author: this.author,
-        time: `${date} ${time}`,
+        time: `${date} ${time} (Edited)`,
       }
 
       this.$store.commit('updateTodo', updatedInfo);
       this.$router.push('/');
+      this.$store.commit('setStorage');
 
       window.scrollTo(0, 0);
     },
+
     resetUpdate() {
       this.$store.commit('resetUpdate')
-    }
+    },
   }
 }
 </script>
@@ -66,8 +64,6 @@ export default {
     display: flex;
     flex-direction: column;
   }
-
- 
 
   form > label {
     margin-top: .8rem;

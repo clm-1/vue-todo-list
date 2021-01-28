@@ -48,10 +48,11 @@ export default {
       this.author = '';
 
       this.$router.push('/')
+      this.$store.commit('setStorage');
 
       window.scrollTo(0, 0);
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -64,8 +65,6 @@ export default {
     display: flex;
     flex-direction: column;
   }
-
- 
 
   form > label {
     margin-top: .8rem;

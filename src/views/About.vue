@@ -15,9 +15,9 @@ export default {
 
 <style scoped>
   .about {
-    max-width: 750px;
+    max-width: 650px;
     margin: .1rem auto;
-    padding: 0 2.5rem;
+    padding: 0 .5rem;
   }
 
   h2 {
