@@ -32,8 +32,8 @@
     watch: {
       todos: {
         deep: true,
-        handler(val) {
-          console.log(val);
+        handler() {
+          this.$store.commit('setStorage');
         } 
       }
     },

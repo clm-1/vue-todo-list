@@ -42,7 +42,6 @@ export default {
 
       this.$store.commit('updateTodo', updatedInfo);
       this.$router.push('/');
-      this.$store.commit('setStorage');
 
       window.scrollTo(0, 0);
     },

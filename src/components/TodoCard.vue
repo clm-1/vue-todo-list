@@ -36,22 +36,18 @@ export default {
   methods: {
     removeTodo() {
       this.$store.commit('removeTodo', this.todo);
-      this.$store.commit('setStorage');
     },
 
     markAsDone() {
       this.$store.commit('markAsDone', this.index);
-      this.$store.commit('setStorage');
     },
 
     moveUp() {
       this.$store.commit('moveUp', this.index);
-      this.$store.commit('setStorage');
     },
 
     moveDown() {
       this.$store.commit('moveDown', this.index);
-      this.$store.commit('setStorage');
     },
 
     updateIndex() {
