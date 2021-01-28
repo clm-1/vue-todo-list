@@ -20,9 +20,11 @@
     </div>
 
     <div class="button-box">
+      <div class="move-btns">
         <div class="todo-btn up" @click="moveUp"><img src="../assets/up.png" alt="move up"></div>
         <div class="todo-btn down" @click="moveDown"><img src="../assets/down.png" alt="move down"></div>
-        <div class="todo-btn remove" @click="removeTodo"><span>X</span></div>
+      </div>
+      <div class="todo-btn remove" @click="removeTodo"><span>X</span></div>
     </div>
 
   </div>
@@ -75,32 +77,35 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    align-self: flex-start;
     width: 75%;
   }
 
   .button-box {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 15%;
+    align-items: flex-end;
+    justify-content: space-between;
+    align-self: stretch;
+    max-width: 30px;
   }
 
   .check-box-wrapper {
     position: relative;
     top: .2rem;
     display: flex;
-    width: 8%;
+    width: 5%;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    align-self: flex-start;
     margin-right: .6rem;
   }
 
   .check-box {
     position: relative;
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 1rem;
+    height: 1rem;
     border: 1px solid black;
     cursor: pointer;
   }
@@ -115,7 +120,7 @@ export default {
   }
 
   .todo-title {
-    font-size: .9rem;
+    font-size: .8rem;
     letter-spacing: .05rem;
     margin-bottom: .1rem;
     font-family: 'Courier New', Courier, monospace
@@ -124,7 +129,7 @@ export default {
   .author {
     color: #555;
     font-weight: 500;
-    font-size: .9rem;
+    font-size: .8rem;
     font-family: monospace;
     margin-bottom: .4rem;
     margin-right: .5rem;
@@ -132,14 +137,14 @@ export default {
 
   .desc {
     font-family: monospace;
-    font-size: 1rem;
+    font-size: .9rem;
     margin-bottom: .4rem;
     color: #222;
   }
 
   .time {
     font-family: monospace;
-    font-size: .8rem;
+    font-size: .7rem;
     color: #555;
   }
 
@@ -150,19 +155,22 @@ export default {
   }
 
   .remove {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 400;
     font-family: Arial, Helvetica, sans-serif;
-    width: 20px;
+    width: 15px;
     display: flex;
     justify-content: center;
-    margin-top: .8rem;
     opacity: .8;
+  }
+
+  .move-btns {
+    order: 1;
   }
 
   .down,
   .up {
-    width: 20px;
+    width: 15px;
     margin-top: .3rem;
   }
 
@@ -196,8 +204,7 @@ export default {
   .update-btn {
     cursor: pointer;
     position: relative;
-    left: .05rem;
-    width: 1.6rem;
+    width: 1.1rem;
     margin-top: .6rem;
   }
 
@@ -209,9 +216,63 @@ export default {
     color: #777;
   }
 
+  @media screen and (min-width: 340px) {
+    .desc {
+      display: initial;
+    }
+  }
+
+  @media screen and (min-width: 400px) {
+    .check-box-wrapper,
+    .info-box,
+    .button-box {
+      align-self: initial;
+    }
+
+    .time {
+      font-size: .8rem;
+    }
+
+    .author {
+      font-size: .9rem;
+    }
+
+    .move-btns {
+      order: initial;
+    }
+
+    .remove {
+      margin-top: .8rem;
+    }
+  }
+
+  @media screen and (min-width: 500px) {
+    .desc {
+      font-size: 1rem;
+    }
+
+    .todo-title {
+      font-size: .9rem;
+    }
+
+    .remove {
+      width: 20px;
+      font-size: 1.3rem;
+    }
+
+    .down,
+    .up {
+      width: 20px;
+    }
+
+    .button-box {
+      max-width: 15%;
+    }
+  }
+
   @media screen and (min-width: 600px) {
     .todo-card {
-      display: flex;
+      align-items: center;
       margin: .1rem 1.4rem;
     }
 
@@ -220,7 +281,18 @@ export default {
     }
 
     .check-box-wrapper {
+      width: 8%;
       margin-right: 0;
+    }
+
+    .check-box {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+
+    .update-btn {
+      left: .05rem;
+      width: 1.6rem;
     }
 
     .info-box {
@@ -236,6 +308,10 @@ export default {
       align-items: center;
     }
 
+    .move-btns {
+      display: flex;
+    }
+
     .remove {
       font-size: 1.5rem;
       margin-left: 1.5rem;
@@ -245,6 +321,7 @@ export default {
     .down,
     .up {
       margin-top: 0;
+      margin-left: .5rem;
       width: 20px;
     }
 

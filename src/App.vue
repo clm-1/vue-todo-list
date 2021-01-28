@@ -12,15 +12,14 @@
 
 <script>
   import Navbar from './components/Navbar.vue'
-  import bg from './assets/ppr-texture.jpg'
 
   export default {
     components: {
       Navbar,
     },
-    data() {
-      return {
-        background: bg,
+    computed: {
+      todos() {
+        return this.$store.state.todos;
       }
     },
     mounted() {
@@ -29,6 +28,14 @@
       } else {
         this.$store.commit('insertTodos');
       } 
+    },
+    watch: {
+      todos: {
+        deep: true,
+        handler(val) {
+          console.log(val);
+        } 
+      }
     },
   }
 </script>

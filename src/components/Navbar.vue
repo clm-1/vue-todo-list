@@ -2,7 +2,7 @@
   <div class="navbar">
 
     <div class="link-wrapper">
-      <router-link to="/" exact active-class="current">Home</router-link>
+      <router-link to="/" exact active-class="current">Todos</router-link>
 
       <router-link to="/add-todo" active-class="current">Add Todo</router-link>
 
