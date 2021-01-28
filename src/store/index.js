@@ -11,12 +11,13 @@ export default new Vuex.Store({
       author: '',
       index: -1,
     },
+
     todos: [
       {
         title: 'This is the first thing I need to do',
         desc: 'Lorem ipsum dolor, sit amet consectetur.',
         author: 'Ipsum Persson',
-        time: '2021-01-26 19:07',
+        time: '2021-01-26 18:11',
         isDone: false,
         isMoved: false,
       },
@@ -24,7 +25,7 @@ export default new Vuex.Store({
         title: 'Another thing to do...',
         desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
         author: 'Ipsum Persson',
-        time: '2021-01-26 19:07',
+        time: '2021-01-26 19:46',
         isDone: false,
         isMoved: false,
       },
@@ -32,7 +33,7 @@ export default new Vuex.Store({
         title: 'And a third one...',
         desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing.',
         author: 'Ipsum Persson',
-        time: '2021-01-26 19:07',
+        time: '2021-01-26 11:17',
         isDone: false,
         isMoved: false,
       },
@@ -40,11 +41,11 @@ export default new Vuex.Store({
         title: 'How many things do I have to do?',
         desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Lorem sit amet.',
         author: 'Ipsum Persson',
-        time: '2021-01-26 19:07',
+        time: '2021-01-26 14:29',
         isDone: false,
         isMoved: false,
       },
-    ]
+    ],
   },
   mutations: {
     removeTodo(state, deleteTodo) {
@@ -115,14 +116,15 @@ export default new Vuex.Store({
         state.updateTodo.index = -1;
       } 
     },
+
     insertTodos(state) {
       const stored = JSON.parse(localStorage.getItem('todos'));
       stored.forEach(todo => { todo.isMoved = false });
       state.todos = stored;
     },
+
     setStorage(state) {
       localStorage.setItem('todos', JSON.stringify(state.todos));
-    }
+    },
   },
-
 })

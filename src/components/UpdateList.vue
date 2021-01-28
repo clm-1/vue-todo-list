@@ -1,7 +1,9 @@
 <template>
   <div class="update-todo">
+
       <h4 @click="updateIndex">{{ todo.title }}</h4>
       <span @click="removeTodo">X</span>
+
   </div>
 </template>
 
@@ -14,11 +16,12 @@ export default {
       this.$emit('update-form');
       window.scrollTo(0,100);
     },
+
     removeTodo() {
       this.$store.commit('removeTodo', this.todo);
       this.$store.commit('resetUpdate', this.index);
     },
-  }
+  },
 }
 </script>
 

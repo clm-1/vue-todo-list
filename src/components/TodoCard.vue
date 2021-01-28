@@ -90,10 +90,10 @@ export default {
     position: relative;
     top: .2rem;
     display: flex;
-    width: 10%;
+    width: 8%;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     margin-right: .6rem;
   }
 

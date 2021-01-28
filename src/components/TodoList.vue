@@ -26,6 +26,6 @@
   .todo-list {
     position:relative;
     margin: 0 auto;
-    max-width: 750px;
+    max-width: 730px;
   }
 </style>

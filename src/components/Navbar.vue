@@ -60,10 +60,9 @@ export default {
     text-decoration: underline;
   }
 
-  @media screen and (min-width: 400px) {
+  @media screen and (min-width: 340px) {
     .link-wrapper {
       flex-direction: row;
     }
   }
-
 </style>

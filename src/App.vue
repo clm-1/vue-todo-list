@@ -1,10 +1,12 @@
 <template>
   <div id="app">
+
     <div class="site-container">
       <h1>- MY TODO LIST -</h1>
       <Navbar />
       <router-view/>
     </div>
+
   </div>
 </template>
 
@@ -27,7 +29,7 @@
       } else {
         this.$store.commit('insertTodos');
       } 
-    }
+    },
   }
 </script>
 
@@ -97,8 +99,14 @@
   h1 {
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     margin: 1.7rem 1rem 1rem 1rem;
+  }
+
+  @media screen and (min-width: 330px) {
+    h1 {
+      font-size: 1.4rem;
+    }
   }
 
   @media screen and (min-width: 430px) {

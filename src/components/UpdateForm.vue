@@ -1,5 +1,4 @@
 <template>
-
   <div class="todo-form">
 
     <form @submit.prevent="updateTodo">
@@ -47,11 +46,7 @@ export default {
 
       window.scrollTo(0, 0);
     },
-
-    resetUpdate() {
-      this.$store.commit('resetUpdate')
-    },
-  }
+  },
 }
 </script>
 

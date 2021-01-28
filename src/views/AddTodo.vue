@@ -1,7 +1,9 @@
 <template>
   <div class="add-todo">
+
     <h2>Add New Todo</h2>
     <TodoForm />
+
   </div>
 </template>
 
@@ -11,7 +13,7 @@
   export default {
     components: {
       TodoForm,
-    }
+    },
   }
 </script>
 
@@ -19,14 +21,25 @@
   .add-todo {
     max-width: 750px;
     margin: .1rem auto;
-    padding: 0 1.7rem;
   }
 
    h2 {
+    font-size: 1rem;
     margin-bottom: 2.5rem;
     text-decoration: underline;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
   }
 
+   @media screen and (min-width: 330px) {
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media screen and (min-width: 400px) {
+    h2 {
+      font-size: 1.4rem;
+    }
+  } 
 </style>

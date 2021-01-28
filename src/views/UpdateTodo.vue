@@ -1,9 +1,12 @@
 <template>
   <div class="update-todo">
+
     <h2>Update Todo</h2>
+
     <div v-if="this.$store.state.updateTodo.index >= 0" class="update-wrapper">
       <UpdateForm :key="checker"/>
     </div>
+
     <h2>Pick Another</h2>
     <div class="todo-list-wrapper">
       <UpdateList v-for="(todo, index) in todos" 
@@ -39,7 +42,7 @@
       todos() {
         return this.$store.state.todos;
       },
-    }
+    },
   }
 </script>
 
@@ -47,7 +50,6 @@
   .add-todo {
     max-width: 750px;
     margin: .1rem auto;
-    padding: 0 1.7rem;
   }
 
    h2 {
@@ -65,5 +67,4 @@
     max-width: 550px;
     margin: 3rem auto;
   }
-
 </style>
