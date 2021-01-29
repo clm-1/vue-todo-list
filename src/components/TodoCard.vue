@@ -21,8 +21,8 @@
 
     <div class="button-box">
       <div class="move-btns">
-        <div class="todo-btn up" @click="moveUp"><img src="../assets/up.png" alt="move up"></div>
-        <div class="todo-btn down" @click="moveDown"><img src="../assets/down.png" alt="move down"></div>
+        <div class="todo-btn up" @click="moveTodo"><img src="../assets/up.png" alt="move up" data-move="up"></div>
+        <div class="todo-btn down" @click="moveTodo"><img src="../assets/down.png" alt="move down" data-move="down"></div>
       </div>
       <div class="todo-btn remove" @click="removeTodo"><span>X</span></div>
     </div>
@@ -42,12 +42,12 @@ export default {
       this.$store.commit('markAsDone', this.index);
     },
 
-    moveUp() {
-      this.$store.commit('moveUp', this.index);
-    },
-
-    moveDown() {
-      this.$store.commit('moveDown', this.index);
+    moveTodo(e) {
+      const moveInfo = {
+        index: this.index,
+        direction: e.target.getAttribute('data-move'),
+      };
+      this.$store.commit('moveTodo', moveInfo);
     },
 
     updateIndex() {
@@ -75,6 +75,7 @@ export default {
     align-items: flex-start;
     align-self: flex-start;
     width: 75%;
+    word-break: break-word;
   }
 
   .button-box {
@@ -210,6 +211,11 @@ export default {
   
   .done > .info-box * {
     color: #777;
+  }
+
+  .done > .button-box > .move-btns {
+    opacity: 0;
+    pointer-events: none;
   }
 
   @media screen and (min-width: 340px) {

@@ -7,21 +7,21 @@
       <UpdateForm :key="checker"/>
     </div>
 
-    <h2>Pick Another</h2>
+    <!-- <h2>Pick Another</h2>
     <div class="todo-list-wrapper">
       <UpdateList v-for="(todo, index) in todos" 
                   :key="index" 
                   :todo="todo"
                   :index="index"
                   v-on:update-form="updateForm"/>
-    </div>
+    </div> -->
     
   </div>
 </template>
 
 <script>
   import UpdateForm from '../components/UpdateForm.vue'
-  import UpdateList from '../components/UpdateList.vue'
+  // import UpdateList from '../components/UpdateList.vue'
 
   export default {
     data() {
@@ -31,10 +31,12 @@
     },
     components: {
       UpdateForm,
-      UpdateList,
+      // UpdateList,
     },
     methods: {
       updateForm() {
+        // Updates the checker (emitted from UpdateList)
+        // Will force update of update form content when current todo to update is changed
         return this.checker++;
       }
     },
@@ -57,6 +59,7 @@
     text-decoration: underline;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
+    font-size: 1rem;
   }
 
   .update-wrapper {
@@ -67,4 +70,16 @@
     max-width: 550px;
     margin: 3rem auto;
   }
+
+  @media screen and (min-width: 330px) {
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media screen and (min-width: 400px) {
+    h2 {
+      font-size: 1.4rem;
+    }
+  } 
 </style>

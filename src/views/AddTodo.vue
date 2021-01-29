@@ -1,7 +1,7 @@
 <template>
   <div class="add-todo">
 
-    <h2>Add New Todo</h2>
+    <h2>{{ title }}</h2>
     <TodoForm />
 
   </div>
@@ -14,6 +14,11 @@
     components: {
       TodoForm,
     },
+    data() {
+      return {
+        title: 'Add New Todo',
+      }
+    }
   }
 </script>
 

@@ -27,23 +27,16 @@ export default {
     }
   },
   methods: {
-    updateTodo() {
-      const today = new Date();
-      const date = today.toLocaleDateString('sv-SE');
-      const zero = today.getMinutes < 10 ? 0 : '';
-      const time = `${today.getHours()}:${zero}${today.getMinutes()}`
-    
+    updateTodo() { 
       const updatedInfo = {
         title: this.title,
         desc: this.desc,
         author: this.author,
-        time: `${date} ${time} (Edited)`,
+        edited: true,
       }
 
-      this.$store.commit('updateTodo', updatedInfo);
+      this.$store.commit('addUpdate', updatedInfo)
       this.$router.push('/');
-
-      window.scrollTo(0, 0);
     },
   },
 }

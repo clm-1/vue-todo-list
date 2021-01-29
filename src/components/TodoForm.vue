@@ -26,30 +26,18 @@ export default {
     }
   },
   methods: {
-    addTodo() {
-      const today = new Date();
-      const date = today.toLocaleDateString('sv-SE');
-      const zero = today.getMinutes < 10 ? 0 : '';
-      const time = `${today.getHours()}:${zero}${today.getMinutes()}`
-    
+    addTodo() { 
       const newTodo = {
         title: this.title,
         desc: this.desc,
         author: this.author,
-        time: `${date} ${time}`,
         isDone: false,
         isMoved: false,
+        edited: false,
       }
 
-      this.$store.commit('addTodo', newTodo);
-
-      this.title = '';
-      this.desc = '';
-      this.author = '';
-
+      this.$store.commit('addUpdate', newTodo);
       this.$router.push('/')
-
-      window.scrollTo(0, 0);
     },
   },
 }
@@ -109,6 +97,10 @@ export default {
     height: 2rem;
     font-size: 1.1rem;
     font-family: monospace;
+  }
+
+  .submit-btn:hover {
+    background-color: rgba(0, 0, 0, 0.04);
   }
 
   .submit-btn:active {
