@@ -11,15 +11,15 @@
 export default {
   props: ['todo', 'index'],
   methods: {
+
+    // Sets current todo to be updated
     updateIndex() {
       this.$store.commit('updateIndex', this.index);
-      this.$emit('update-form');
       window.scrollTo(0,100);
     },
 
     removeTodo() {
       this.$store.commit('removeTodo', this.todo);
-      this.$store.commit('resetUpdate', this.index);
     },
   },
 }

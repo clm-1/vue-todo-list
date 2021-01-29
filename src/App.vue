@@ -22,25 +22,28 @@
         return this.$store.state.todos;
       }
     },
+
+    // If local storage is empty, insert the 4 default todos from store
+    // If local storage contains todos, insert them as the current todo-list
     mounted() {
-      // If local storage is empty, insert the 4 default todos from store
-      // If local storage contains todos, insert them as the current todo-list instead
       if (localStorage.getItem('todos') === null) {
         this.$store.commit('setStorage');
       } else {
         this.$store.commit('insertTodos');
       } 
     },
+
+    // Watch for changes to todo-list in store
+    // Update local storage when change is detected
     watch: {
-      // Watch for changes to todo-list in store
-      // Update local storage when change is detected
       todos: {
         deep: true,
         handler() {
           this.$store.commit('setStorage');
         } 
-      }
+      },
     },
+
   }
 </script>
 

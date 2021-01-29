@@ -51,10 +51,9 @@ export default new Vuex.Store({
       state.todos = state.todos.filter(todo => todo !== deleteTodo);
     },
 
+    // Add or update todo
+    // Used in both TodoForm and UpdateForm
     addUpdate(state, newTodo) {
-      // Add or update todo
-      // Function is used in both UpdateForm.vue and TodoForm.vue
-
       const today = new Date();
       const date = today.toLocaleDateString('sv-SE');
       const zero = today.getMinutes() < 10 ? 0 : '';
@@ -75,31 +74,44 @@ export default new Vuex.Store({
       window.scrollTo(0, 0);
     },
 
+    // Mark/unmark todo as done
+    // Move todo to bottom if done
+    // If unmarked, move up (before first marked as "done")
     markAsDone(state, todoIndex) {
-      // Mark/unmark a todo as "done"
-      // Moves todo to bottom if marked as done, to top if unmarked
-
       let markedTodo = null;
       const markAndMove = () => {
         state.todos[todoIndex].isDone = !state.todos[todoIndex].isDone;
         markedTodo = state.todos.splice(todoIndex, 1);
       };
 
-      if (state.todos[todoIndex].isDone === false) {
+      let insertIndex = null;
+      for (let i = 0; i < state.todos.length; i++) {
+        if (state.todos[i].isDone) {
+          insertIndex = i;
+          break;
+        }
+      }
+
+      if (!state.todos[todoIndex].isDone) {
         markAndMove();
         state.todos.push(...markedTodo);
       } else {
         markAndMove();
-        state.todos.unshift(...markedTodo);
+        if (insertIndex === 0) {
+          state.todos.unshift(...markedTodo);
+        } else if (insertIndex) {
+          state.todos.splice(insertIndex, 0, ...markedTodo);
+        } else {
+          state.todos.push(...markedTodo);
+        }
       } 
     },
 
+    // Move todo based on direction (set in component)
+    // Indicate which todo is moved with css-class based on isMoved
     moveTodo(state, moveInfo) {
       const i = moveInfo.index;
       const iShift = moveInfo.direction === 'up' ? -1 : 1;
-
-      // Indicate the todo that has moved with css-class
-      // Splice and insert todo to move it
 
       const todoMover = () => {
         state.todos[i].isMoved = true;
@@ -110,8 +122,6 @@ export default new Vuex.Store({
         state.todos.splice(i + iShift, 0, ...todoToMove);
       };
 
-      // Check move-direction and if the todo is moveable (not first or last)
-
       if (moveInfo.direction === 'up') {
         if (i > 0) {
           todoMover();    
@@ -121,9 +131,8 @@ export default new Vuex.Store({
       }
     },
 
+    // Sets updateTodo to track which todo to edit currently
     updateIndex(state, todoIndex) {
-      // This function sets updateTodo to track which todo to edit currently
-
       state.updateTodo = {
         title: state.todos[todoIndex].title,
         desc: state.todos[todoIndex].desc,
@@ -132,26 +141,16 @@ export default new Vuex.Store({
       };
     },
 
-    resetUpdate(state, index) {
-      // This function resets updateTodo to no todo
-
-      if (state.updateTodo.index === index) {
-        state.updateTodo.index = -1;
-      } 
-    },
-
+    // Insert todos from local storage to state.todos
     insertTodos(state) {
-      // Insert todos from local storage to store.state
-
       const stored = JSON.parse(localStorage.getItem('todos'));
       stored.forEach(todo => { todo.isMoved = false });
       state.todos = stored;
     },
 
+    // Sets the local storage to current todo-list each time it's updated
+    // This is tracked from App.vue
     setStorage(state) {
-      // Sets the local storage to current todo-list each time it's updated
-      // This is tracked from App.vue
-
       localStorage.setItem('todos', JSON.stringify(state.todos));
     },
   },

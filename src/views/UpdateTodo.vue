@@ -4,41 +4,33 @@
     <h2>Update Todo</h2>
 
     <div v-if="this.$store.state.updateTodo.index >= 0" class="update-wrapper">
-      <UpdateForm :key="checker"/>
+      <UpdateForm />
     </div>
 
-    <!-- <h2>Pick Another</h2>
-    <div class="todo-list-wrapper">
-      <UpdateList v-for="(todo, index) in todos" 
-                  :key="index" 
-                  :todo="todo"
-                  :index="index"
-                  v-on:update-form="updateForm"/>
-    </div> -->
+    <!-- A simplified list of todos is shown when no todo is selected -->
+    <!-- For example, when page is reloaded on update-page -->
+
+    <div v-else class="update-list">
+      <h2>No Todo Was Selected</h2>
+      <div class="todo-list-wrapper">
+        <UpdateList v-for="(todo, index) in todos" 
+                    :key="index" 
+                    :todo="todo"
+                    :index="index" />
+      </div>
+    </div>
     
   </div>
 </template>
 
 <script>
   import UpdateForm from '../components/UpdateForm.vue'
-  // import UpdateList from '../components/UpdateList.vue'
+  import UpdateList from '../components/UpdateList.vue'
 
   export default {
-    data() {
-      return {
-        checker: 0,
-      }
-    },
     components: {
       UpdateForm,
-      // UpdateList,
-    },
-    methods: {
-      updateForm() {
-        // Updates the checker (emitted from UpdateList)
-        // Will force update of update form content when current todo to update is changed
-        return this.checker++;
-      }
+      UpdateList,
     },
     computed: {
       todos() {

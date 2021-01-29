@@ -3,9 +3,7 @@
 
     <div class="link-wrapper">
       <router-link to="/" exact active-class="current">Todos</router-link>
-
       <router-link to="/add-todo" active-class="current">Add Todo</router-link>
-
       <router-link to="/about" active-class="current">About</router-link>
     </div>
 
