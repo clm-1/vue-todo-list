@@ -21,8 +21,8 @@
 
     <div class="button-box">
       <div class="move-btns">
-        <div class="todo-btn up" @click="moveTodo"><img src="../assets/up.png" alt="move up" data-move="up"></div>
-        <div class="todo-btn down" @click="moveTodo"><img src="../assets/down.png" alt="move down" data-move="down"></div>
+        <div class="todo-btn up" @click="moveTodo" :class="{ first: this.index === 0 }"><img src="../assets/up.png" alt="move up" data-move="up"></div>
+        <div class="todo-btn down" @click="moveTodo" :class="{ first: this.index === this.$store.state.todos.length - 1 }"><img src="../assets/down.png" alt="move down" data-move="down"></div>
       </div>
       <div class="todo-btn remove" @click="removeTodo"><span>X</span></div>
     </div>
@@ -169,6 +169,11 @@ export default {
   .up {
     width: 15px;
     margin-top: .3rem;
+  }
+
+  .first,
+  .last {
+    opacity: .5;
   }
 
   @keyframes flash {
