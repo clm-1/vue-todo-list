@@ -1,6 +1,7 @@
 <template>
+  <!-- This component is currently only used when no todo is selected on update-page  -->
   <div class="update-todo">
-
+      
       <h4 @click="updateIndex">{{ todo.title }}</h4>
       <span @click="removeTodo">X</span>
 

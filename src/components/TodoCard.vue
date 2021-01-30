@@ -24,7 +24,7 @@
         <div class="todo-btn up" @click="moveTodo" :class="{ first: this.index === 0 }"><img src="../assets/up.png" alt="move up" data-move="up"></div>
         <div class="todo-btn down" @click="moveTodo" :class="{ first: this.index === this.$store.state.todos.length - 1 }"><img src="../assets/down.png" alt="move down" data-move="down"></div>
       </div>
-      <div class="todo-btn remove" @click="removeTodo"><span>X</span></div>
+      <div class="todo-btn remove" @click="removeTodo">X</div>
     </div>
 
   </div>

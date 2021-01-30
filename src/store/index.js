@@ -19,6 +19,7 @@ export default new Vuex.Store({
         time: '2021-01-26 18:11',
         isDone: false,
         isMoved: false,
+        edited: false,
       },
       {
         title: 'Another thing to do...',
@@ -27,6 +28,7 @@ export default new Vuex.Store({
         time: '2021-01-26 19:46',
         isDone: false,
         isMoved: false,
+        edited: false,
       },
       {
         title: 'And a third one...',
@@ -35,6 +37,7 @@ export default new Vuex.Store({
         time: '2021-01-26 11:17',
         isDone: false,
         isMoved: false,
+        edited: false,
       },
       {
         title: 'How many things do I have to do?',
@@ -43,6 +46,7 @@ export default new Vuex.Store({
         time: '2021-01-26 14:29',
         isDone: false,
         isMoved: false,
+        edited: false,
       },
     ],
   },
@@ -68,6 +72,7 @@ export default new Vuex.Store({
         state.todos[i].desc = newTodo.desc;
         state.todos[i].author = newTodo.author;
         state.todos[i].time = `${newTodo.time} (Edited)`;
+        state.todos[i].edited = true;
         state.updateTodo.index = -1;
       }
   

@@ -12,13 +12,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      isHome: true,
-      isAdd: false,
-      isAbout: false,
-    }
-  },
+
 }
 </script>
 

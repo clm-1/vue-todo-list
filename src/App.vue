@@ -86,7 +86,7 @@
     z-index: 0;
     padding: 1.5rem 1.5rem 3rem 1.5rem;
     background-color: rgb(250, 249, 249);
-    background: linear-gradient(351deg, rgb(240, 240, 240) 0%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(351deg, rgb(240, 240, 245) 0%, rgba(255,255,255,1) 100%);
     box-shadow: 1px 0px 12px rgba(12, 5, 5, 0.1),
                 -1px 0px 12px rgba(0, 0, 0, 0.1);
   }

@@ -28,7 +28,7 @@
     margin: .1rem auto;
   }
 
-   h2 {
+  h2 {
     font-size: 1rem;
     margin-bottom: 2.5rem;
     text-decoration: underline;
@@ -36,7 +36,7 @@
     text-align: center;
   }
 
-   @media screen and (min-width: 330px) {
+  @media screen and (min-width: 330px) {
     h2 {
       font-size: 1.2rem;
     }
